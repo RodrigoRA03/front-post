@@ -1,6 +1,7 @@
 <template>
-    <main class="max-w-2xl mx-auto">
-        <form autocomplete="off" @submit.prevent="createPost" method="post">
+  <main class="max-w-2xl mx-auto ">
+      <Navbar />
+        <form autocomplete="off" @submit.prevent="createPost" method="post" class="mt-32">
           <div class="my-3">
             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Titulo</label>
             <input 
@@ -42,8 +43,10 @@
 
 <script>
 import PostCard from '../components/posts/PostCard.vue';
+import Navbar from '../components/template/Navbar.vue';
+
 export default {
-    components: { PostCard },
+    components: { PostCard , Navbar},
     data() {
         return {
             fecha_publicacion: null,

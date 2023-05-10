@@ -1,12 +1,4 @@
 <template>
-  <ul class="nav">
-    <li>
-      <router-link to="/listar-posts">Listado Post</router-link>
-    </li>
-    <li>
-      <router-link to="/crear-post">Crear Posts</router-link>
-    </li>
-  </ul>
   <router-view></router-view>
 </template>
 
