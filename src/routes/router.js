@@ -6,7 +6,7 @@ import DetailPostScreen from '../pages/DetailPostScreen.vue'
 const routes = [
   { path: '/listar-posts', component: PostsScreen },
   { path: '/crear-post', component: CreatePostScreen },
-  { path: '/detalle-post', component: DetailPostScreen, name: 'DetailPostScreen' }
+  { path: '/detalle-post/:id', component: DetailPostScreen, name: 'DetailPostScreen', props: true }
 ]
 
 const router = createRouter({

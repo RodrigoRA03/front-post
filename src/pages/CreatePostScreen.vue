@@ -59,7 +59,7 @@ export default {
                     contenido: this.contenido,
                     fecha_publicacion: this.fecha_publicacion
                 })
-                .then(response => {
+                .then(() => {
                     this.$router.push('/listar-posts');
                 })
                 .catch(error => {
@@ -69,7 +69,3 @@ export default {
     }
 }
 </script>
-
-<style lang="">
-    
-</style>

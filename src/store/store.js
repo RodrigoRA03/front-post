@@ -4,6 +4,7 @@ const url = 'http://localhost:8000/api/posts'
 const store = createStore({
   state: {
     posts: [],
+    postSelected: null,
     pagination: null
   },
   getters: {},
@@ -16,6 +17,9 @@ const store = createStore({
     },
     ADD_POST(state, payload) {
       state.posts = [payload, ...state.posts]
+    },
+    ADD_POST_SELECTED(state, payload) {
+      state.postSelected = payload
     }
   },
   actions: {
@@ -37,6 +41,11 @@ const store = createStore({
       })
       const jsonData = await res.json()
       context.commit('ADD_POST', jsonData.data)
+    },
+    async showPost(context, credentials) {
+      const res = await fetch(`${url}/get-post-by-id/${credentials.id}`)
+      const jsonData = await res.json()
+      context.commit('ADD_POST_SELECTED', jsonData)
     }
   },
   modules: {}
