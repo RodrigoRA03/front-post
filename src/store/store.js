@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 
 const url = 'http://localhost:8000/api/posts'
+const urlComments = 'http://localhost:8000/api/comments'
 const store = createStore({
   state: {
     posts: [],
@@ -44,6 +45,18 @@ const store = createStore({
     },
     async showPost(context, credentials) {
       const res = await fetch(`${url}/get-post-by-id/${credentials.id}`)
+      const jsonData = await res.json()
+      context.commit('ADD_POST_SELECTED', jsonData)
+    },
+    async addComment(context, credentials) {
+      const res = await fetch(urlComments, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(credentials)
+      })
       const jsonData = await res.json()
       context.commit('ADD_POST_SELECTED', jsonData)
     }

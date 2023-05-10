@@ -2,8 +2,8 @@
     <main class="max-w-2xl mx-auto">
       <div class="my-10 px-4 bg-white rounded-lg border border-gray-200 shadow-md">
         <PostCard v-if="post" :post="post" :isPostSelect="true"/>
-        <CommentTextArea/>
-        <div class="" v-for="comment in post.comments" :key="comment.id">
+        <CommentTextArea v-if="id" :id="id"/>
+        <div v-if="post" v-for="comment in post.comments" :key="comment.id">
           <Comments :comment="comment"/>
         </div>
       </div>
@@ -17,17 +17,17 @@ import Comments from '../components/comments/Comments.vue';
 
 
 export default {
-    components: { PostCard , CommentTextArea, Comments },
-    props:{id:String},
-     computed:{
+  components: { PostCard , CommentTextArea, Comments },
+  props:{id:String},
+  computed:{
       post(){
       return this.$store.state.postSelected
      },
-    },
-    created () {
+  },
+  created () {
         this.$store.dispatch('showPost',{
-            id:Number(this.id)
-        })
-     },
+        id:Number(this.id)
+    })
+  },
 }
 </script>

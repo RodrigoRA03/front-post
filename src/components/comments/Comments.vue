@@ -30,8 +30,7 @@
     }
   },
   created() {
-    this.moment = moment
-     
+    this.moment = moment  
   },
 }
 </script>
